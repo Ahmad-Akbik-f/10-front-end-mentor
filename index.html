@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" href="./CSS/Normlize.css">
+  <title>Tip calculator app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <h1>SPLI<br>TTER</h1>
+    <div class="parent">
+      <div class="stats">
+        <div class="bill">
+          <span>Bill</span>
+          <div class="b input">
+            <input type="text" placeholder="0">
+          </div>
+        </div>
+        <div class="tips">
+          <span>Select Tip %</span>
+          <div>
+            <button data-tip="5" class="tip">5%</button>
+            <button data-tip="10" class="tip">10%</button>
+            <button data-tip="15" class="tip">15%</button>
+          </div>
+          <div>
+            <button data-tip="25" class="tip">25%</button>
+            <button data-tip="50" class="tip">50%</button>
+            <button data-tip="0" class="tip custom">Custom</button>
+          </div>
+        </div>
+        <div class="people">
+          <span>Number of People</span>
+          <div class="p input">
+            <input type="text" placeholder="0">
+          </div>
+        </div>
+      </div>
+      <div class="res">
+        <div class="rev">
+          <div class="text">
+            <p>Tip Amount</p>
+            <span>/ person</span>
+          </div>
+          <p class="num r">$0.00</p>
+        </div>
+        <div class="rev">
+          <div class="text">
+            <p>Total</p>
+            <span>/ person</span>
+          </div>
+          <p class="num t">$0.00</p>
+        </div>
+        <button class="reset">RESET</button>
+      </div>
+    </div>
+  </main>
+  <script src="./JS/main.js"></script>
+</body>
+</html>
