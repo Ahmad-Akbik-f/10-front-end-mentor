@@ -4,53 +4,52 @@ let tips = document.querySelectorAll(".tips .tip");
 let resetBtn = document.querySelector(".reset");
 let res = document.querySelector("main .res .rev > p.r")
 let resT = document.querySelector("main .res .rev > p.t")
-let customTip = document.querySelector(".tips .tip.custom")
+let customTip = document.querySelector(".custom")
 let Bill;
 let peopleNum;
-customTip.oninput=()=>{
-    if(resetBtn.classList.contains("active")){
-        customTip.dataset.tip = customTip.value;
-    }
-    tip()
-}
+//
 customTip.onclick = ()=>{
-    customTip.oninput=()=>{
-        if(resetBtn.classList.contains("active")){
-            customTip.dataset.tip = customTip.value;
+    if(resetBtn.classList.contains("active")){
+        customTip.removeAttribute("readonly")
+        tips.forEach(el =>{
+            el.classList.remove("active")
+        });
+        if(!(Number.isNaN(Number(customTip.value))) && customTip.value !== "") {
+            customTip.dataset.tip = customTip.value
+            customTip.classList.add("active")
+            tip()
+        }else{
+            customTip.classList.remove("active")
         }
-        tip()
+    }else{
+        customTip.setAttribute("readonly")
     }
-    tip()
 }
+customTip.oninput = ()=>{
+    if(resetBtn.classList.contains("active")){
+        if(!(Number.isNaN(Number(customTip.value))) && customTip.value !== "") {
+            customTip.dataset.tip = customTip.value
+            customTip.classList.add("active")
+            tip()
+        }else{
+            customTip.classList.remove("active")
+        }
+    }
+}
+//
 tips.forEach(el => {
     el.onclick = ()=>{
         if(resetBtn.classList.contains("active")){
-            if(el.classList.contains("custom")){
-                let newEle = document.createElement("input")
-                newEle.classList.add("tip","active")
-                newEle.style.display = "inline-block"
-                newEle.type = "text"
-                newEle.dataset.tip = "0"
-                el.replaceWith(newEle)
-                newEle.focus()
-                newEle.oninput=()=>{
-                    if(resetBtn.classList.contains("active")){
-                        newEle.dataset.tip = newEle.value;
-                    }
-                    tip()
-                }
-                tip()
-            }
             tips.forEach(ele=>{
-                console.log(ele)
                 ele.classList.remove("active")
-                customTip.classList.remove("active")
             })
             el.classList.add("active")
+            tip()
+            customTip.classList.remove("active")
         }
-        tip()
     }
 });
+//
 resetBtn.onclick = ()=>{
     if(resetBtn.classList.contains("active")){
         window.location.reload();
@@ -58,15 +57,24 @@ resetBtn.onclick = ()=>{
 }
 BillInput.oninput = ()=>{
     checker()
-    tip()
+    tips.forEach(el => {
+        if(el.classList.contains("active")){
+            tip()
+        }
+    });
 }
 peopleInput.oninput = ()=>{
-    tip()
     checker()
+    tips.forEach(el => {
+        if(el.classList.contains("active")){
+            tip()
+        }
+    });
 }
+//
 // Functions
 function tip(){
-    let activeTip = document.querySelector(".tips .tip.active")
+    let activeTip = document.querySelector(".tips .active")
     if(resetBtn.classList.contains("active")){
         res.textContent = `$${Number(((activeTip.dataset.tip * BillInput.value) / 100)/peopleInput.value).toFixed(2)}`
         resT.textContent = `$${((activeTip.dataset.tip * BillInput.value) / 100).toFixed(2)}`
@@ -79,7 +87,7 @@ function tip(){
         }
     }
 }
-function checker() {
+function checker(){
     let check1;
     let check2;
     if(!(Number.isNaN(Number(BillInput.value))) && BillInput.value !== "") {
@@ -93,9 +101,11 @@ function checker() {
        check2 = false;
     }
     if(check1 && check2){
-        resetBtn.classList.add("active")
+        resetBtn.classList.add("active");
     }else{
-        resetBtn.classList.remove("active")
+        resetBtn.classList.remove("active");
+        res.textContent = "$0.00"
+        resT.textContent = "$0.00"
     }
 }
 //

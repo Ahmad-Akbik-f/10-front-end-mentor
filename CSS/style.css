@@ -69,25 +69,28 @@ main .stats .tips .tip:hover {
   background-color: rgb(159, 232, 223);
   color: hsl(183, 100%, 15%);
 }
-main .stats .tips .tip.custom {
-  background-color: hsl(189, 41%, 97%);
-  color: hsl(186, 14%, 43%);
-}
-main .stats .tips .tip.custom:hover {
-  background-color: rgb(159, 232, 223);
-  color: hsl(183, 100%, 15%);
-}
-main .stats .tips input.tip {
+main .stats .tips input {
   background-color: hsl(203, 50%, 97%);
   color: hsl(183, 100%, 15%);
   border: 1px solid transparent;
+  outline: none;
+  border-radius: 6px;
   display: inline;
-  padding: 5px 5px;
+  padding: 7px 5px;
   font-size: 16px;
+  text-align: right;
   width: calc(33.3333333333% - 18px);
 }
-main .stats .tips input.tip:focus {
+main .stats .tips input:focus {
   border-color: rgb(159, 232, 223);
+}
+main .stats .tips input::-moz-placeholder {
+  text-align: center;
+  color: hsl(186, 14%, 43%);
+}
+main .stats .tips input::placeholder {
+  text-align: center;
+  color: hsl(186, 14%, 43%);
 }
 main .stats span {
   color: hsl(186, 14%, 43%);
@@ -123,7 +126,7 @@ main .stats .input::after {
 main .stats .input.p::after {
   content: url(../images/icon-person.svg);
 }
-main .stats input {
+main .stats .input input {
   display: block;
   border: none;
   background-color: hsl(203, 50%, 97%);
@@ -138,13 +141,13 @@ main .stats input {
   transition: 0.2s;
   border: 1px solid transparent;
 }
-main .stats input::-moz-placeholder {
+main .stats .input input::-moz-placeholder {
   color: hsl(184, 14%, 56%);
 }
-main .stats input::placeholder {
+main .stats .input input::placeholder {
   color: hsl(184, 14%, 56%);
 }
-main .stats input:focus {
+main .stats .input input:focus {
   border-color: rgb(159, 232, 223);
 }
 main .res {
