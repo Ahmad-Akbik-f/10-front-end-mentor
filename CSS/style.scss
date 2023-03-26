@@ -161,6 +161,8 @@ main{
                     font-size: 35px;
                     margin: 0;
                     color: hsl(172, 67%, 45%);
+                    max-width: 200px;
+                    word-wrap: break-word;
                 }
             }
         }
